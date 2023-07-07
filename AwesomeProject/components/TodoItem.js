@@ -1,9 +1,10 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import CheckboxUnChecked from '../assets/checkbox-unchecked.svg';
+import CheckboxUnchecked from '../assets/checkbox-unchecked.svg';
 import CheckboxChecked from '../assets/checkbox-checked.svg';
 import DeleteIcon from '../assets/delete.svg';
 import { useDispatch } from 'react-redux';
+import { deleteTodo, updateTodo } from '../redux/slices/todoSlice';
 
 const TodoItem = (props) => {
   const dispatch = useDispatch();
@@ -12,14 +13,12 @@ const TodoItem = (props) => {
       <Pressable
         hitSlop={10}
         style={styles.itemCheckbox}
-        onPress={() => {
-          dispatch(updateTodo(props.id));
-        }}
+        onPress={() => dispatch(updateTodo(props.id))}
       >
         {props.state === 'todo' ? (
-          <CheckboxUnChecked />
+          <CheckboxUnchecked />
         ) : (
-          <CheckboxChecked style={styles.itemCheckBoxCheckedIcon} />
+          <CheckboxChecked style={styles.itemCheckboxCheckedIcon} />
         )}
       </Pressable>
       <Text
@@ -63,8 +62,8 @@ const styles = StyleSheet.create({
     marginRight: 13,
     borderRadius: 6,
   },
-  itemCheckBoxCheckedIcon: {
-    shadowColor: '#000',
+  itemCheckboxCheckedIcon: {
+    shadowColor: '#000000',
     shadowOpacity: 0.14,
     shadowRadius: 8,
     shadowOffset: {
