@@ -12,7 +12,9 @@ const TodoItem = (props) => {
       <Pressable
         hitSlop={10}
         style={styles.itemCheckbox}
-        onPress={() => dispatch(updateTodo(props.id))}
+        onPress={() => {
+          dispatch(updateTodo(props.id));
+        }}
       >
         {props.state === 'todo' ? (
           <CheckboxUnChecked />
